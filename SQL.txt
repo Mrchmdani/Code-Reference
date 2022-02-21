@@ -1,0 +1,207 @@
+----------
+SELECT CLAUSE
+
+DISTINCT()
+	--No duplicate (if no unique/primary key) and if distinct is not specified, all is assumed
+
+AGGREGATE FUNCTION
+SUM() 
+	--returns the sum of a column. The column should be numeric.
+COUNT() 
+	--returns/counts the number of rows in a query
+AVG() 
+	--returns the average/mean value of a column
+MIN() 
+	--returns the minimum or smallest value of a column
+MAX() 
+	--returns the maximum or biggest value of a column
+FIRST() 
+	--returns the first value of the given column
+LAST() 
+	--returns the last value of the given column
+
+SCALAR FUNCTION
+LEN() or LENGTH ()
+	--returns the total length of the given column
+MID() 
+	--extracts the characters from a text field
+TRUNCATE(column, x) 
+	--use to truncate number of decimal
+NOW() 
+	--used to return system’s current date & time
+FORMAT() 
+	--used to format a field/column value how it should be displayed in the output
+REPLACE(column, 'x', 'x' ) 
+	--change value/string with value/string
+CAST('column' as int) or CONVERT(int, column)
+	--if want to change the attribute
+
+STRING FUNCTION
+CONCAT(column1, column2, ...)
+	--CONCATENATE ( Combine text/string )
+	--used to concatenate 2 or more strings and forms a single string
+SUBSTR(column_name, string_position, number_char_return)
+	--SUBSTING (return specified number character)
+TRIM
+	--remove leading and trailing space
+LOWER( ) 
+	--converts the given column to lowercase
+UPPER( ) 
+	--converts the given column to uppercase
+RIGHT(column, value)
+	--menarik 'value' dari belakang
+LEFT(column, value)
+	--menarik 'value' dari depan
+
+MATH FUNCTION
+ABS ()
+	--absolute, number always positive
+ROUND() 
+	--used to round a numeric value to the nearest integer
+ROUND(column, x ) 
+	--x for number of decimal
+FLOOR() 
+	--used to round a numeric value to the lower integer
+CEILING() / CEIL() 
+	--used to round a numeric value to the upper integer
+SQRT() 
+	--used to find square root value of the given number
+POWER(column, x) 
+	--pangkat, x=value
+RAND() 
+	--used to generate some random numbers
+
+----------
+FROM CLAUSE
+JOIN
+	Inner join
+	Left outer join
+	Right outer join
+	Full outer join
+	Cross join
+		Nested Loops joins
+		Merge joins
+		Hash joins
+		Adaptive joins
+PIVOT
+	--relational operators to change a table-valued expression into another table, rotates a table-valued expression
+
+----------
+WHERE CLAUSE
+	--Specifies the search condition for the rows returned by the query
+
+----------
+GROUP BY CLAUSE
+GROUP BY
+	--GROUP BY( ) function is used in conjunction with a SELECT statement and aggregate functions (such as SUM(), AVG(), MAX() etc.), 
+	--to group similar data in result-set by one or more columns.
+HAVING
+	--HAVING( ) function in SQL acts as a filter which is used to specify conditions on aggregate functions in WHERE clause. 
+	--The main purpose of HAVING() function is, aggregate functions such as SUM(), COUNT(), AVG(), etc. can’t be used in where clause. 
+	--So, they are used in where clause with the help of HAVING() function.
+
+----------
+OVER CLAUSE
+OVER(PARTITION BY column ORDER BY column)
+	PARTITION BY
+		--divides the query result set into partitions
+	ORDER BY
+		--defines the logical order of the rows within each partition of the result set
+	ROW or RANGE
+		--limits the rows within the partition by specifying start and end points within the partition
+		-- It requires ORDER BY argument and the default value is from the start of partition to the current element if the ORDER BY argument is specified
+
+RANKING FUNCTION
+RANK
+	--numeric value for ties (for example 1, 2, 2, 4, 5)
+DENSE_RANK
+	--returns the rank of each row within a result set partition, with no gaps in the ranking values. 
+NTILE
+	--distributes the rows in an ordered partition into a specified number of groups
+ROW_NUMBER()
+	--numbers all rows sequentially (for example 1, 2, 3, 4, 5)
+
+
+----------
+ORDER BY CLAUSE
+	--Sort data and always the last clause in select statement
+ASC 
+	--Kecil ke besar
+DESC 
+	--Besar ke kecil
+
+CASE STATEMENT
+CASE
+WHEN [when_expression]
+THEN [result_expression]
+ELSE [other_result_expression/result_else]
+END [name_column}
+
+IF STATEMENT
+IF(x, then, else)
+IF(x,then, IF(x, then, else))
+
+----------
+Arithmetic OPERATOR
++ (Add) 
+	--Addition
+- (Subtract) 
+	--Subtraction
+* (Multiply)
+	--Multiplication
+/ (Divide)
+	--Division
+% (Modulo)
+	--Returns the integer remainder of a division. For example, 12 % 5 = 2 because the remainder of 12 divided by 5 is 2
+(column %2) = 0 
+	--even number
+(column %2) != 0 
+	--odd number
+
+LOGICAL OPERATORS
+= 
+	--Equal
+<> or !=
+	--Not Equal
+> 
+	--Greater than
+< 
+	--Less Than
+>= 
+	--Greater than or equal
+<= 
+	--Less than or equal
+ALL
+	--TRUE if all of a set of comparisons are TRUE
+EXISTS
+	--TRUE if a subquery contains any rows
+BETWEEN 
+	--Between an inclusive range 
+IS NULL 
+	--Is null valuue
+IN (xx, xx, ...) 
+	--specific range condition, separated by comma and ( )
+	--TRUE if the operand is equal to one of a list of expressions
+LIKE
+	--TRUE if the operand matches a pattern
+AND 
+	--TRUE if both Boolean expressions are TRUE
+OR 
+	--TRUE if either Boolean expression is TRUE
+NOT 
+	--Reverses the value of any other Boolean operator
+SOME
+	--TRUE if some of a set of comparisons are TRUE
+
+LIKE '%' --WILDCARD only for string, example
+--if '%Pizza' grab anything ending with pizza
+--if 'Pizza%' grab anything after pizza
+--if '%Pizza%' grab anything befor after pizza
+--if 'S%E' grab anything that start with 'S' and end with 'E'
+--if 't%@gmail.com' grab gmail addresses tjat start with 't'
+
+REGEXP --performs a pattern match of a string expression against a pattern.
+WHERE city REGEXP '^[aeiou]'
+--match first leter with vowel (a e i o u)
+WHERE city REGEXP '[aeiou]$'
+--match ending leter with vowel (a e i o u)
